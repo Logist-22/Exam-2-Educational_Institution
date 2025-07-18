@@ -3,9 +3,12 @@
 
 
 
-Student::Student() : Person(), studentId(""), course(0), averageGrade(0.0) {}
-Student::Student(const string& firstName, const string& lastName, int age, const string& phone, const string& studentId, int course, double averageGrade) 
-    : Person(firstName, lastName, age, phone), studentId(studentId), course(course), averageGrade(averageGrade) {}
+Student::Student() : Person(), studentId(""), year(0), averageGrade(0.0) {}
+
+Student::Student(const string& firstName, const string& lastName, int age, const string& phone, string studentId, int year, double averageGrade)
+    : Person(firstName, lastName, age, phone), studentId(studentId), year(year), averageGrade(averageGrade) {}
+
+
 
 string Student::getStudentId() const 
 {
@@ -14,7 +17,7 @@ string Student::getStudentId() const
 
 int Student::getCourse() const
 {
-    return course; 
+    return year;
 }
 
 double Student::getAverageGrade() const
@@ -29,7 +32,7 @@ void Student::setStudentId(const string& studentId)
 
 void Student::setCourse(int course)
 {
-    this->course = course; 
+    this->year = course;
 }
 
 void Student::setAverageGrade(double averageGrade)
@@ -41,7 +44,9 @@ void Student::display() const
 {
     Person::display();
     cout << "Студенческий билет: " << studentId << endl;
-    cout << "Курс: " << course << endl;
+    cout << "Курс: " << year << endl;
     cout << "Средний балл: " << averageGrade << endl;
     cout << endl;
 }
+
+

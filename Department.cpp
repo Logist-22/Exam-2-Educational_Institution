@@ -1,8 +1,17 @@
 #include "Department.h"
 
 Department::Department(const string& departmentName) : departmentName(departmentName), headDepartment(nullptr) {}
+Department::~Department()
+{
+    for (Course* course : courses) 
+    {
+        delete course; 
+    }
+    courses.clear();
+}
 
-string Department::getdepartmentName() const 
+
+string Department::getDepartmentName() const 
 {
     return departmentName; 
 }
@@ -61,29 +70,45 @@ void Department::display() const {
     if (headDepartment) {
         cout << "Заведующий кафедрой: " << headDepartment->getFirstName() << " " << headDepartment->getLastName() << endl;
     }
+    else
+    {
+        cout << "Заведующий не назначен" << endl;
+    }
     cout << "Штат учителей: " << teachers.size() << endl;
     cout << endl;
-    if (teachers.empty()) {
-        cout << "Нет закрепленных учителей за кафедрой" << endl;
-        return;
+    if (teachers.empty()) 
+    {
+        cout << "Нет закрепленных учителей за кафедрой" << endl;        
     }
-    cout << "Список преподавателей:" << endl;
-    cout << "------------------------------------------------------" << endl;
-    int num1 = 1;
-    for (const auto& teacher : teachers) {
-        cout << num1++ << ". ";
-        teacher->display();
-        cout << "--------------------------------------------------" << endl;
+    else
+    {
+        cout << "Список преподавателей:" << endl;
+        cout << "------------------------------------------------------" << endl;
+        int num1 = 1;
+        for (const auto& teacher : teachers) 
+        {
+            cout << num1++ << ". ";
+            teacher->display();
+            cout << "--------------------------------------------------" << endl;
+        }
     }
     cout << endl;
     cout << "Всего курсов: " << courses.size() << endl;
-    cout << "Список курсов:" << endl;
-    cout << "-----------------------------------------------------" << endl;
-    int num2 = 1;
-    for (const auto& course : courses) {
-        cout << num2++ << ". ";
-        course->display();
-        cout << "-------------------------------------------------" << endl;
+    if (courses.empty())
+    {
+        cout << "За кафедрой нет закретленных курсов" << endl;
+    }
+    else
+    {
+        cout << "Список курсов:" << endl;
+        cout << "-----------------------------------------------------" << endl;
+        int num2 = 1;
+        for (const auto& course : courses) 
+        {
+            cout << num2++ << ". ";
+            course->display();
+            cout << "-------------------------------------------------" << endl;
+        }
     }
     cout << endl;
 }

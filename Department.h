@@ -16,8 +16,9 @@ private:
 
 public:
     Department(const string& departmentName);
+    ~Department();
     
-    string getdepartmentName() const;
+    string getDepartmentName() const;
     Teacher* getHeadDepartment() const;
     const vector<Teacher*>& getTeachers() const;
     const vector<Course*>& getCourses() const;

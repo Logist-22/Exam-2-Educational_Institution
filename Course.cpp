@@ -1,4 +1,5 @@
 #include "Course.h"
+#include "Student.h"
 
 
 Course::Course(const string& courseName, const string& code) : courseName(courseName), code(code), teacher(nullptr) {}
@@ -40,7 +41,7 @@ void Course::setTeacher(Teacher* teacher)
 
 void Course::addStudent(Student* student)
 {
-    this->students.push_back(student);
+    students.push_back(student);    
 }
 
 void Course::removeStudent(Student* student)
@@ -70,5 +71,5 @@ void Course::display() const
         cout << "Преподаватель: " << teacher->getFirstName() << " " << teacher->getLastName() << endl;
     }
     cout << "Количество студентов на курсе: " << students.size() << endl;
-    cout << "Средняя оценка на курсе: " << calculateAverageGrade() << endl;
+    cout << "Средняя оценка на курсе: " << fixed << setprecision(2) << calculateAverageGrade() << endl;
 }

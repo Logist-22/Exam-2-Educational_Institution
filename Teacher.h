@@ -22,7 +22,7 @@ public:
     void setExperience(int experience);
 
     void addCourse(const string& course);       //добавление преподаваемой дисциплины
-    void removeCourse(const string& course);                                         ////удаление преподаваемой дисциплины
+    void removeCourse(const string& course);    //удаление преподаваемой дисциплины
     void display() const override;    
 };
 
